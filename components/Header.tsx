@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Search, ShoppingCart } from 'lucide-react'
+import { Search, ShoppingCart, Users, Home } from 'lucide-react'
 import { useCart } from '../context/CartContext'
+import Link from 'next/link'
 
 interface HeaderProps {
   onSearch: (term: string) => void
@@ -21,7 +22,21 @@ export const Header: React.FC<HeaderProps> = ({ onSearch }) => {
     <header className="header">
       <div className="container">
         <div className="header-content">
-          <div className="logo">AmazonClone</div>
+          <div className="header-left">
+            <Link href="/" className="logo">
+              AmazonClone
+            </Link>
+            <nav className="main-nav">
+              <Link href="/" className="nav-link">
+                <Home size={16} />
+                <span>Shop</span>
+              </Link>
+              <Link href="/communities" className="nav-link">
+                <Users size={16} />
+                <span>Communities</span>
+              </Link>
+            </nav>
+          </div>
           
           <form className="search-bar" onSubmit={handleSearch}>
             <input
